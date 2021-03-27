@@ -3,12 +3,14 @@ require_once 'db.php'; // соединение с бд
 require_once 'header.php';
 
 // получаем список программ
+$progItems = [];
 $progItemsHTML = '';
 $result = $conn->query('SELECT * FROM `programms` ORDER BY name ASC'); // запрос на выборку
 while ($row = $result->fetch_assoc()) {
     // готовим куски шаблона в переменную
     $id = $row['id'];
     $name = $row['name'];
+    $progItems[$id] = $name;
     $progItemsHTML .=
         '
         <li class="checkbox-box">
