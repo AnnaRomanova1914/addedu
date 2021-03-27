@@ -1,7 +1,7 @@
 <div class="field-group dropdown">
     <label class="field-name" for="count-prog">Название программы</label>
     <button type="button" class="btn btn-outline btn-default dropdown-toggle" id="count-prog" data-toggle="dropdown" aria-expanded="false">
-        0 из 10 выбрано
+        выберите программу
     </button>
 
     <ul class="dropdown-menu bullet dropdown-menu-left dropdown-search-box" aria-labelledby="select" role="menu">
@@ -12,17 +12,18 @@
             <input type="checkbox" value="all" id="checkboxAll">
             <label for="checkboxAll">[Выбрать все]</label>
         </li>
+<?php // вывод программ
+foreach ($progItems as $id => $name) {
+    echo '
         <li class="checkbox-box">
-            <input type="checkbox" value="1" class="checkbox-prog" id="select1">
-            <label for="select1">Первая</label>
+            <input type="checkbox" value="' .
+        $id .
+        '" class="checkbox-prog">
+            <label for="select1">' .
+        $name .
+        '</label>
         </li>
-        <li class="checkbox-box">
-            <input type="checkbox" value="2" class="checkbox-prog" id="select2">
-            <label for="select2">Вторая</label>
-        </li>
-        <li class="checkbox-box">
-            <input type="checkbox" value="3" class="checkbox-prog" id="select3">
-            <label for="select3">Третья</label>
-        </li>
+        ';
+} ?>
     </ul>
 </div>
