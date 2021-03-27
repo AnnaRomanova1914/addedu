@@ -1,32 +1,37 @@
-
 ul.dropdown-search-box {
-	max-height: 600px;
-	width: 600px;
-	overflow-y: auto;
+    max-height: 600px;
+    width: 600px;
+    overflow-y: auto;
 }
+
 ul.dropdown-search-box .search-box {
-	padding: 5px;
-	border-bottom: 1px solid #ddd;
-}
-ul.dropdown-search-box .checkbox-box {
-	padding-left: 5px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
 }
 
-.checkbox-box label{
-	margin-bottom: 0px;
+ul.dropdown-search-box .checkbox-box,
+ul.dropdown-search-box .checkbox-box-all {
+    padding-left: 5px;
 }
 
-.field-group{
+.checkbox-box label,
+.checkbox-box-all label {
+    margin-bottom: 0px;
+}
+
+.field-group {
     position: relative;
     display: -ms-inline-flexbox;
     display: inline-flex;
     vertical-align: middle;
 }
+
 .field-name {
-	padding: 5px;
-	margin: 5px;
-	vertical-align: middle;
+    padding: 5px;
+    margin: 5px;
+    vertical-align: middle;
 }
+
 
 /*
 

@@ -8,22 +8,10 @@
         <li class="search-box">
             <input id="searchForm" type="text" class="form-control" placeholder="" value="" name="search" />
         </li>
-        <li class="checkbox-box">
-            <input type="checkbox" value="all" id="checkboxAll">
-            <label for="checkboxAll">[Выбрать все]</label>
+        <li class="checkbox-box-all">
+            <input type="checkbox" value="all" id="checkbox-all">
+            <label for="checkbox-all">[Выбрать все]</label>
         </li>
-<?php // вывод программ
-foreach ($progItems as $id => $name) {
-    echo '
-        <li class="checkbox-box">
-            <input type="checkbox" value="' .
-        $id .
-        '" class="checkbox-prog">
-            <label for="select1">' .
-        $name .
-        '</label>
-        </li>
-        ';
-} ?>
+<?php echo $progItemsHTML; ?>
     </ul>
 </div>

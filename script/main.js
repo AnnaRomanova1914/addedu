@@ -3,7 +3,7 @@ const progsList = $('li.checkbox-box'),
     progsListInput = progsList.find('input.checkbox-prog'),
     progCount = progsListInput.length,
     countLabel = $('#count-prog'),
-    selectAll = $('#checkboxAll');
+    selectAll = $('#checkbox-all');
 
 
 // вывод в название кнопки количетсва выбранных программ
@@ -25,6 +25,7 @@ $('#searchForm').keyup(function() {
 
     if (searchText.length > 1) {
         progsList.hide();
+        selectAll.show();
         progsList.filter(':contains("' + searchText + '")').show();
     } else {
         progsList.show();
