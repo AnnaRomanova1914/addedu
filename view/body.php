@@ -38,15 +38,12 @@
             </tr>
         </thead>
         <tbody>
-        <?php
-        $i = 1;
-        foreach ($progItems as $id => $name) { ?>
+        <?php foreach (array_values($progItems) as $i => $name) { ?>
             <tr>
-            <th scope="row"><?php echo $i; ?></th>
+            <th scope="row"><?php echo $i + 1; ?></th>
             <td><?php echo $name; ?></td>
             </tr>
-        <?php $i++;}
-        ?>
+        <?php } ?>
         </tbody>
     </table>
 </div>
