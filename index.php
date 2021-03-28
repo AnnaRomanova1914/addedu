@@ -1,32 +1,25 @@
 <?php
 require_once 'db.php'; // соединение с бд
-require_once 'header.php';
+require_once 'view/header.php';
+
+// проверка наличия отправленных данных с формы поиска
+$checkedProgs = !empty($_POST) && isset($_POST['progs']) ? $_POST['progs'] : [];
+
+// подготовка запроса
+$sql_where = count($checkedProgs)
+    ? ($sql_where =
+        'WHERE id in (' .
+        implode(', ', array_map('intval', $checkedProgs)) .
+        ') ')
+    : '';
+$sql = 'SELECT * FROM `programms` ' . $sql_where . ' ORDER BY name ASC';
 
 // получаем список программ
 $progItems = [];
-$progItemsHTML = '';
-$result = $conn->query('SELECT * FROM `programms` ORDER BY name ASC'); // запрос на выборку
+$result = $conn->query($sql); // запрос на выборку
 while ($row = $result->fetch_assoc()) {
-    // готовим куски шаблона в переменную
-    $id = $row['id'];
-    $name = $row['name'];
-    $progItems[$id] = $name;
-    $progItemsHTML .=
-        '
-        <li class="checkbox-box">
-            <input type="checkbox" value="' .
-        $id .
-        '" id="checkbox_' .
-        $id .
-        '" class="checkbox-prog">
-            <label for="checkbox_' .
-        $id .
-        '">' .
-        $name .
-        '</label>
-        </li>
-        ';
+    $progItems[$row['id']] = $row['name'];
 }
 
-require_once 'body.php';
-require_once 'bottom.php';
+require_once 'view/body.php';
+require_once 'view/bottom.php';

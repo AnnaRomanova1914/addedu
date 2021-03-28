@@ -5,7 +5,6 @@ const progsList = $('li.checkbox-box'),
     countLabel = $('#count-prog'),
     selectAll = $('#checkbox-all');
 
-
 // вывод в название кнопки количетсва выбранных программ
 const countProg = () => {
     let checkedCount = progsList.find('input.checkbox-prog:checked').length,
