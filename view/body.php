@@ -12,7 +12,7 @@
                <ul class="dropdown-menu bullet dropdown-menu-left dropdown-search-box" aria-labelledby="select"
                    role="menu">
                    <li class="search-box">
-                       <input id="searchForm" type="text" class="form-control" placeholder="" value="" name="search" />
+                       <input id="searchInput" type="text" class="form-control" placeholder="" value="" name="search" />
                    </li>
                    <li class="checkbox-box-all">
                        <input type="checkbox" value="all" id="checkbox-all">

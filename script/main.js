@@ -1,9 +1,11 @@
 // программы
 const progsList = $('li.checkbox-box'),
-    progsListInput = progsList.find('input.checkbox-prog'),
-    progCount = progsListInput.length,
+    progInputs = progsList.find('input.checkbox-prog'),
+    progLabels = progsList.find('label'),
+    progCount = progInputs.length,
     countLabel = $('#count-prog'),
-    selectAll = $('#checkbox-all');
+    selectAll = $('#checkbox-all'),
+    searchInput = $('#searchInput');
 
 // вывод в название кнопки количетсва выбранных программ
 const countProg = () => {
@@ -19,16 +21,21 @@ const countProg = () => {
 countProg();
 
 // поиск по 2м буквам
-$('#searchForm').keyup(function() {
-    let searchText = $(this).val();
-
-    if (searchText.length > 1) {
-        progsList.hide();
-        selectAll.show();
-        progsList.filter(':contains("' + searchText + '")').show();
-    } else {
+searchInput.keyup(function() {
+    let searchText = $(this).val().toLowerCase();
+    // всего 1 символ
+    if (searchText.length <= 1) {
         progsList.show();
+        return;
     }
+    // 2 и более символов
+    progsList.hide();
+    selectAll.show();
+    // регистрозависимый progsList.filter(':contains("' + searchText + '")').show();
+    // регистронезависимый
+    progLabels.filter((id, item) => {
+        return item.innerText.toLowerCase().indexOf(searchText) >= 0;
+    }).parent().show();
 });
 
 
@@ -39,7 +46,7 @@ selectAll.click(function(event) {
 });
 
 // убрать галочку Выбрать все, если в каком-то элементе убрали галочку
-progsListInput.click(function(event) {
+progInputs.click(function(event) {
     if (event.target.checked == false)
         selectAll.prop("checked", false);
     countProg();
